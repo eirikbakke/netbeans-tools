@@ -459,6 +459,10 @@ newFolder	ide/bugtracking/src/org/netbeans/modules/bugtracking/tasks/resources/a
 newFolder	profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/addFolder.png
 newFolder	ide/o.n.swing.dirchooser/src/org/netbeans/swing/dirchooser/resources/newFolderIcon_mac.png
 newFolder	ide/o.n.swing.dirchooser/src/org/netbeans/swing/dirchooser/resources/newFolderIcon.gif
+error32	platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/error32.png
+question32	platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/question32.png
+info32	platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/info32.png
+warning32	platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/warning32.png
 wait	apisupport/apisupport.ant/src/org/netbeans/modules/apisupport/project/suite/resources/wait.png
 wait	contrib/j2ee.jboss4/src/org/netbeans/modules/j2ee/jboss4/resources/wait.gif
 wait	enterprise/j2ee.api.ejbmodule/src/org/netbeans/modules/j2ee/ejbjar/project/ui/wait.gif

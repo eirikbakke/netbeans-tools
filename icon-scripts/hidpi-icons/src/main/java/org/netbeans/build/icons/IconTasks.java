@@ -18,6 +18,10 @@
  */
 package org.netbeans.build.icons;
 
+import com.github.weisj.jsvg.SVGDocument;
+import com.github.weisj.jsvg.geometry.size.FloatSize;
+import com.github.weisj.jsvg.parser.LoaderContext;
+import com.github.weisj.jsvg.parser.SVGLoader;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
@@ -29,9 +33,11 @@ import com.google.common.collect.SetMultimap;
 import com.google.common.collect.Sets;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -58,6 +64,7 @@ import org.netbeans.build.icons.TypeTaggedString.Hash;
  */
 public class IconTasks {
     private static final String LICENSE_HEADER = readLicenseHeader();
+    private static final SVGLoader SVG_LOADER = new SVGLoader();
 
     public static void main(String[] args) throws IOException {
         final File ICON_SCRIPTS_DIR = new File(System.getProperty("user.dir"), "../");
@@ -127,7 +134,7 @@ public class IconTasks {
             for (ArtboardName artboard : readyArtboards) {
                 File artboardSVGFile = getIllustratorSVGFile(ILLUSTRATOR_SVGS_DIR, artboard);
                 if (!artboardSVGFile.exists()) {
-                    throw new RuntimeException("File not found: " + artboardSVGFile);
+                    System.out.println("Illustrator export " + artboardSVGFile + " not found; skipping.");
                 }
             }
         }
@@ -175,7 +182,6 @@ public class IconTasks {
         for (ArtboardName artboard : readyArtboards) {
             final String svgContentToWrite;
             if (copySVGfiles) {
-                // Existence was checked earlier.
                 svgContentToWrite = prepareSVGWithInsertedLicense(ILLUSTRATOR_SVGS_DIR, artboard);
             } else {
                 svgContentToWrite = null;
@@ -327,9 +333,6 @@ public class IconTasks {
                 if (parts.length == 2) {
                     String artboard = parts[0].trim();
                     String filePath = parts[1].trim();
-                    if (filePath.endsWith(".svg")) {
-                        throw new RuntimeException("File mapping cannot be to an SVG file.");
-                    }
                     File actualFile = new File(nbsrcDir, filePath);
                     if (!actualFile.exists()) {
                         throw new RuntimeException("File does not exist: " + actualFile);
@@ -390,6 +393,9 @@ public class IconTasks {
     private static String prepareSVGWithInsertedLicense(File illustratorSVGsDir, ArtboardName artboard) throws IOException {
         StringBuilder ret = new StringBuilder();
         File srcFile = getIllustratorSVGFile(illustratorSVGsDir, artboard);
+        if (!srcFile.exists()) {
+            return null;
+        }
         try (BufferedReader br = new BufferedReader(new FileReader(srcFile))) {
             String line;
             boolean firstLine = true;
@@ -426,6 +432,17 @@ public class IconTasks {
     }
 
     private static @Nullable Dimension readImageDimension(File file) throws IOException {
+        if (file.getName().endsWith(".svg")) {
+            SVGDocument svgDocument = SVG_LOADER.load(new BufferedInputStream(
+                    new FileInputStream(file)), null, LoaderContext.builder().build());
+            if (svgDocument == null) {
+                throw new IOException("Failed to load SVG file " + file);
+            }
+            FloatSize floatSize = svgDocument.size();
+            return new Dimension(
+                    (int) Math.ceil(floatSize.getWidth()),
+                    (int) Math.ceil(floatSize.getHeight()));
+        }
         BufferedImage image = ImageIO.read(file);
         if (image == null)
           throw new IOException("ImageIO.read returned null for " + file);

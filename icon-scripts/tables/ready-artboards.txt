@@ -65,3 +65,7 @@ warning
 zoomIn
 zoomOut
 newFolder
+error32
+question32
+info32
+warning32
