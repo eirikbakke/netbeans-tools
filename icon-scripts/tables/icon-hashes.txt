@@ -4161,3 +4161,7 @@ ffca9d46943d74b0feb8d4ada7072749fee2506d51f9d7faec4430384a123684  platform/optio
 11254a8adc039d44ec59cdcc8f774217444fa459dda98621b3e03468522396d5  platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/question32.png
 9ee635e0584abf7036ac2045ce02bb829fbf68a672c04342902acb582bcf339d  platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/info32.png
 da2221c251086574a354affc22acee13403dcab00f0c3874ec6d786efeaefd40  platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/warning32.png
+275baee4e17fb586f76bc7df052f17a7c1916925fe0c1770f9ae8555df2146ed  platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/filePlain.png
+4da17a32d0793f7ae06582a107057e209bebabe814de6a4112a5d3000dc9f564  platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/home.png
+f9fc3f3d6fcb7b796d6b0e0a3e2f5f3d12fe62c998adf53cd3b3260cc85b2848  platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/folderUp.png
+04d91f8d56603190ad0e15b689ccf32c362b59f586e41cd419568de6a3b4ef15  platform/o.n.swing.laf.flatlaf/src/org/netbeans/swing/laf/flatlaf/resources/newFolder.png

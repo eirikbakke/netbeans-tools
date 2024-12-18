@@ -69,3 +69,6 @@ error32
 question32
 info32
 warning32
+filePlain
+home
+folderUp
