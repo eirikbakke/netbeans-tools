@@ -72,7 +72,7 @@ warning32
 filePlain
 home
 folderUp
-warningBadgeLeft8x8
+warningBadge8x8
 warningBadgeRight
 stop
 rerunMod
@@ -143,3 +143,13 @@ methods
 instance
 interface
 filterHideInherited
+project
+runCurrentProject
+fileHTML
+fileUnknown
+constantPrivate
+constantProtected
+updateDatabase
+testSkipped
+globe8x8
+error8x8

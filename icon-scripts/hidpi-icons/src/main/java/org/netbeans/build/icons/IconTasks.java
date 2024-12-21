@@ -146,7 +146,9 @@ public class IconTasks {
         for (Entry<ArtboardName, Hash> entry : hashesByArtboard.entries()) {
             ArtboardName artboard = entry.getKey();
             Hash hash = entry.getValue();
-            for (IconPath ip : filesByHash.get(hash)) {
+            List<IconPath> pathsForThisHash = Lists.newArrayList(filesByHash.get(hash));
+            pathsForThisHash.sort((e1, e2) -> e1.toString().compareTo(e2.toString()));
+            for (IconPath ip : pathsForThisHash) {
                 Util.putChecked(newArtboardByFile, ip, artboard);
             }
         }
@@ -162,11 +164,15 @@ public class IconTasks {
                     unassignedIcons.add(new SimpleEntry(ip, dim));
                 }
             }
-            // Order unassigned icons by width, then by height.
+            /* Order unassigned icons by width, then by height, then by path. (If there are multiple
+            paths, the first path will end up being used for sorting per putIfAbsent below.) */
             unassignedIcons.sort((e1, e2) -> {
                 int ret = Integer.compare(e1.getValue().width, e2.getValue().width);
                 if (ret == 0) {
                     ret = Integer.compare(e1.getValue().height, e2.getValue().height);
+                }
+                if (ret == 0) {
+                    ret = e1.getKey().toString().compareTo(e2.getKey().toString());
                 }
                 return ret;
             });
@@ -251,7 +257,7 @@ public class IconTasks {
                 for (IconPath ip : ips) {
                     Hash hash = Util.getChecked(iconHashesByFile, ip);
                     if (!UNASSIGNED_ARTBOARD.equals(artboard)) {
-                        mappingsPW.println(artboard + "\t" + ip);
+                        mappingsPW.println(artboard + "  " + ip);
                     }
 
                     htmlPW.print(artboardIdx % 2 == 0 ? "<tr>" :
