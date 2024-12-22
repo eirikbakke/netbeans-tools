@@ -654,6 +654,9 @@ filterHideNonPublic  enterprise/j2ee.sun.ddui/src/org/netbeans/modules/j2ee/sun/
 private  java/java.navigation/src/org/netbeans/modules/java/navigation/resources/private.gif
 private  ide/csl.api/src/org/netbeans/modules/csl/navigation/resources/filterHideNonPublic.png
 private  java/java.graph/src/org/netbeans/modules/java/graph/resources/lock.png
+private  contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/resources/designer-security.gif
+private  ide/spi.debugger.ui/src/org/netbeans/modules/debugger/resources/watchesView/PrivateModifier.gif
+private  java/javadoc/src/org/netbeans/modules/javadoc/comments/resources/private.gif
 privateBadge  java/java.project.ui/src/org/netbeans/spi/java/project/support/ui/privateBadge.gif
 publicBadge  java/java.project.ui/src/org/netbeans/spi/java/project/support/ui/publicBadge.gif
 constantPublic  ide/csl.api/src/org/netbeans/modules/csl/source/resources/icons/constantPublic.png
@@ -836,6 +839,7 @@ fileHTML  ide/languages/src/org/netbeans/modules/languages/resources/defaultIcon
 fileHTML  ide/lsp.client/src/org/netbeans/modules/lsp/client/bindings/icons/snippet.png
 fileHTML  ide/lsp.client/src/org/netbeans/modules/lsp/client/bindings/icons/text.png
 fileHTML  ide/html/src/org/netbeans/modules/html/htmlObject.png
+fileHTML  enterprise/websvc.restapi/src/org/netbeans/modules/websvc/rest/spi/resources/item.gif
 fileUnknown  enterprise/websvc.manager/src/org/netbeans/modules/websvc/manager/resources/MyActionIcon.gif
 fileUnknown  ide/jumpto/src/org/netbeans/modules/jumpto/resources/unknown.gif
 fileUnknown  ide/spi.palette/src/org/netbeans/modules/palette/resources/unknown16.gif
@@ -907,6 +911,7 @@ fileSQL  ide/derby/src/org/netbeans/modules/derby/resources/optionsIcon16.png
 fileImage  ide/image/src/org/netbeans/modules/image/imageObject.png
 fileImage  java/debugger.jpda.ui/src/org/netbeans/modules/debugger/jpda/resources/show_property_editors_16.png
 fileJS  webcommon/javascript2.editor/src/org/netbeans/modules/javascript2/editor/resources/javascript.png
+filePDF  ide/utilities/src/org/netbeans/modules/pdf/PDFDataIcon.png
 fileYAML  ide/languages.yaml/src/org/netbeans/modules/languages/yaml/yaml_files_16.png
 fileApplet  java/form/src/org/netbeans/modules/form/resources/applet.gif
 fileApplet  java/form/src/org/netbeans/modules/form/resources/dialog.gif
@@ -917,6 +922,14 @@ fileAnnotation  java/java.project/src/org/netbeans/spi/java/project/support/ui/t
 fileAnnotation  java/java.source/src/org/netbeans/modules/java/resources/annotation_file.png
 fileAnnotation  nbbuild/javadoctools/siteresource/annotation.png
 fileClazz  java/java.source/src/org/netbeans/modules/java/resources/clazz.gif
+fileProfileSnapshot  profiler/profiler.heapwalker/src/org/netbeans/modules/profiler/heapwalk/ui/icons/impl/snapshotDataObject.png
+fileProfileSnapshot  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/snapshotDataObject.png
+fileProfileSnapshotCPU  profiler/profiler.snaptracer/src/org/netbeans/modules/profiler/snaptracer/impl/icons/snapshotDataObjectCPU.png
+fileProfileSnapshotCPU  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/snapshotDataObjectCPU.gif
+fileProfileSnapshotFragment  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/snapshotDataObjectFragment.gif
+fileProfileSnapshotMemory  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/snapshotDataObjectMemory.gif
+fileINI  webcommon/languages.ini/src/org/netbeans/modules/languages/ini/resources/ini_file_16.png
+fileTypescript  webcommon/typescript.editor/src/org/netbeans/modules/typescript/editor/icon.png
 annotation  ide/csl.api/src/org/netbeans/modules/csl/source/resources/icons/annotation.png
 annotation  ide/editor/src/org/netbeans/modules/editor/resources/completion/annotation_type.png
 annotation  java/java.source/src/org/netbeans/modules/java/source/resources/icons/annotation.png
@@ -1140,6 +1153,7 @@ profile  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/controlP
 profile  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/controlPanelWindow.gif
 profile  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/profile.png
 profile  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/profileRunning.png
+profileInactive  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/profileInactive.png
 clock  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/leafNode.png
 clock  enterprise/web.monitor/src/org/netbeans/modules/web/monitor/client/icons/timestamp.gif
 clock  profiler/profiler.ppoints/src/org/netbeans/modules/profiler/ppoints/ui/icons/stopwatchProfilingPoint.png
@@ -1255,6 +1269,8 @@ cleanProject  ide/projectui/src/org/netbeans/modules/project/ui/resources/cleanC
 scaleToFit  profiler/profiler/src/org/netbeans/modules/profiler/impl/icons/scaleToFit.png
 watch  ide/spi.debugger.ui/src/org/netbeans/modules/debugger/resources/watchesView/watch_16.png
 watch  ide/spi.debugger.ui/src/org/netbeans/modules/debugger/resources/watchesView/Watch.gif
+newWatch  ide/spi.debugger.ui/src/org/netbeans/modules/debugger/resources/actions/NewWatch.gif
+newWatch  ide/spi.debugger.ui/src/org/netbeans/modules/debugger/resources/watchesView/create_new_watch_16.png
 profilePoint  profiler/profiler.ppoints/src/org/netbeans/modules/profiler/ppoints/ui/icons/ppoint.png
 okWithErrors  ide/gsf.testrunner/src/org/netbeans/modules/gsf/testrunner/resources/ok_withErrors_16.png
 restartError  ide/gsf.testrunner/src/org/netbeans/modules/gsf/testrunner/resources/restart_error2_16.png
@@ -1274,6 +1290,7 @@ dbConnectionBroken  java/j2ee.persistence/src/org/netbeans/modules/j2ee/persiste
 dbConnectionBroken  java/j2ee.persistence/src/org/netbeans/modules/j2ee/persistence/ui/resources/connectionDisconnected.gif
 j2eeProjects  enterprise/profiler.j2ee/src/org/netbeans/modules/profiler/j2ee/impl/icons/j2eeProjects.png
 checkXML  ide/xml.tools/src/org/netbeans/modules/xml/tools/resources/check_xml.png
+checkXML  ide/xml.tools/src/org/netbeans/modules/xml/tools/resources/checkDTDAction.gif
 validateXML  ide/xml.tools/src/org/netbeans/modules/xml/tools/resources/validate_xml.png
 lightbulbError  ide/csl.api/src/org/netbeans/modules/csl/core/error-sg.gif
 lightbulbError  ide/spi.editor.hints/src/org/netbeans/modules/editor/hints/resources/error-sg.gif
@@ -1281,3 +1298,5 @@ lightbulbError  enterprise/j2ee.sun.ddui/src/org/netbeans/modules/j2ee/sun/ddloa
 lightbulbWarning  ide/csl.api/src/org/netbeans/modules/csl/core/warning-sg.gif
 lightbulbWarning  ide/spi.editor.hints/src/org/netbeans/modules/editor/hints/resources/verifier-sg.gif
 lightbulbWarning  ide/spi.editor.hints/src/org/netbeans/modules/editor/hints/resources/warning-sg.gif
+othersBadge  java/maven/src/org/netbeans/modules/maven/others-badge.png
+diff  ide/versioning.ui/src/org/netbeans/modules/versioning/ui/diff/diff.png
