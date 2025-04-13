@@ -354,6 +354,8 @@ public class IconTasks {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
+                if (line.trim().isEmpty())
+                  continue;
                 String[] parts = line.split("\\s+", 2);
                 if (parts.length == 2) {
                     String artboard = parts[0].trim();
