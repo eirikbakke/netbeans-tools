@@ -1081,7 +1081,7 @@ javadocAction  java/java.navigation/src/org/netbeans/modules/java/navigation/res
 javadocAction  java/java.navigation/src/org/netbeans/modules/java/navigation/resources/javadoc_open.png
 navigator  ide/spi.navigator/src/org/netbeans/modules/navigator/resources/navigator.png
 showSearchDetails  platform/api.search/src/org/netbeans/modules/search/res/search.gif
-valueGrey  java/maven.grammar/src/org/netbeans/modules/maven/navigator/value4.png
+valueBrown  java/maven.grammar/src/org/netbeans/modules/maven/navigator/value4.png
 valueGreen  ide/xml.schema.completion/src/org/netbeans/modules/xml/schema/completion/resources/attribute.png
 artifactBadge  extide/gradle/src/org/netbeans/modules/gradle/resources/module-artifact.png
 artifactBadge  java/maven.hints/src/org/netbeans/modules/maven/hints/ArtifactBadge.png
