@@ -282,7 +282,9 @@ public class IconTasks {
                     htmlPW.print(artboardIdx % 2 == 0 ? "<tr>" :
                             "<tr style='background: #eee'>");
                     if (subRowIdx == 0) {
-                        htmlPW.print("<td rowspan='" + ips.size() + "'>" + artboard);
+                        /* Add an invisible "^" to make it possible to search for artboard names
+                        with Ctrl+F. */
+                        htmlPW.print("<td rowspan='" + ips.size() + "'><span style=\"color: #00000000\">^</span>" + artboard);
                         htmlPW.print("<td rowspan='" + ips.size() + "'>");
                         if (readyArtboards.contains(artboard)) {
                             htmlPW.print("<img src='" + getSVGIconPath(ip) + "'>");
