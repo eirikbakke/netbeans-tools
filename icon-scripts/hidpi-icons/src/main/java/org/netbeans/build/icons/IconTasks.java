@@ -64,11 +64,8 @@ import org.netbeans.build.icons.TypeTaggedString.Hash;
  */
 public class IconTasks {
     /* Constants relating to artboard positioning in the generated add_illustrator_exports.jsx
-    script. All values are in pixels. To avoid overlapping with existing icons, adjust
-    ARTBOARD_FIRST_COLUMN_Y in future runs. */
-    private static final int ARTBOARD_FIRST_COLUMN_X = 312;
-    private static final int ARTBOARD_FIRST_ROW_Y = 0;
-    private static final int ARTBOARD_MAX_X = 312 + 288;
+    script. All values are in pixels. */
+    private static final int ARTBOARD_MAX_X = 288;
     private static final int ARTBOARD_GRID = 12;
     private static final int ARTBOARD_MIN_SPACING = 2;
 
@@ -223,8 +220,8 @@ public class IconTasks {
             }
         }
 
-        int artboardX = ARTBOARD_FIRST_COLUMN_X;
-        int artboardY = ARTBOARD_FIRST_ROW_Y;
+        int artboardX = 0;
+        int artboardY = 0;
         int currentArtboardRowTallestIcon = 0;
 
         /* The mappings file is assumed to be in a git repo so that the user of the script can
@@ -241,6 +238,16 @@ public class IconTasks {
             scriptPW.println("var doc = app.activeDocument;");
             scriptPW.println("var targetLayer = doc.layers.getByName(\"Old Bitmaps\");");
             scriptPW.println("var left, top, right, bottom, placedItem, embeddedItem, scaleX, scaleY;\n");
+
+            scriptPW.println("var firstColumnX = 0;");
+            scriptPW.println("for (var i = 0; i < doc.artboards.length; i++) {");
+            scriptPW.println("  var abRect = doc.artboards[i].artboardRect;");
+            scriptPW.println("  var rightX = abRect[2]; // right side of this artboard");
+            scriptPW.println("  if (rightX > firstColumnX) {");
+            scriptPW.println("    firstColumnX = rightX;");
+            scriptPW.println("  }");
+            scriptPW.println("}");
+            scriptPW.println("firstColumnX += 32;\n");
 
             htmlPW.println(LICENSE_HEADER);
             htmlPW.println("""
@@ -340,8 +347,8 @@ public class IconTasks {
                     Dimension dim = Util.getChecked(dimensionsByHash, hash);
 
                     if (artboardX + dim.width > ARTBOARD_MAX_X) {
-                        artboardX = ARTBOARD_FIRST_COLUMN_X;
-                        artboardY -= getArtboardAdvance(ARTBOARD_FIRST_ROW_Y - artboardY, currentArtboardRowTallestIcon);
+                        artboardX = 0;
+                        artboardY -= getArtboardAdvance(-artboardY, currentArtboardRowTallestIcon);
                         /* TODO: Round up to multiple of ARTBOARD_GRID, if not too large. (Maybe the
                                  exemption should be made generally based on size, rather than the
                                  current position. */
@@ -351,7 +358,7 @@ public class IconTasks {
                     if (!file.exists()) {
                         throw new AssertionError("File existence should have been checked earlier");
                     }
-                    scriptPW.println("left   = " + artboardX + ";");
+                    scriptPW.println("left   = " + artboardX + " + firstColumnX;");
                     scriptPW.println("top    = " + artboardY + ";");
                     scriptPW.println("right  = left + " + dim.width + ";");
                     scriptPW.println("bottom = top  - " + dim.height + ";"); // Minus appears correct here.
@@ -371,7 +378,7 @@ public class IconTasks {
                     scriptPW.println();
 
                     currentArtboardRowTallestIcon = Math.max(currentArtboardRowTallestIcon, dim.height);
-                    artboardX += getArtboardAdvance(artboardX - ARTBOARD_FIRST_COLUMN_X, dim.width);
+                    artboardX += getArtboardAdvance(artboardX, dim.width);
                 }
 
                 artboardIdx++;
