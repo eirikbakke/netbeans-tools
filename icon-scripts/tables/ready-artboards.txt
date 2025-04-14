@@ -205,3 +205,6 @@ debugCamera
 debugProject
 debugAttach
 navigator
+jshellCommand
+java
+terminal
