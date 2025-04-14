@@ -69,7 +69,7 @@ public class IconTasks {
     private static final int ARTBOARD_FIRST_COLUMN_X = 312;
     private static final int ARTBOARD_FIRST_ROW_Y = 0;
     private static final int ARTBOARD_MAX_X = 312 + 288;
-    private static final int ARTBOARD_GRID = 24;
+    private static final int ARTBOARD_GRID = 12;
     private static final int ARTBOARD_MIN_SPACING = 2;
 
     private static final String LICENSE_HEADER = readLicenseHeader();
@@ -341,7 +341,7 @@ public class IconTasks {
 
                     if (artboardX + dim.width > ARTBOARD_MAX_X) {
                         artboardX = ARTBOARD_FIRST_COLUMN_X;
-                        artboardY -= currentArtboardRowTallestIcon + ARTBOARD_MIN_SPACING;
+                        artboardY -= getArtboardAdvance(ARTBOARD_FIRST_ROW_Y - artboardY, currentArtboardRowTallestIcon);
                         /* TODO: Round up to multiple of ARTBOARD_GRID, if not too large. (Maybe the
                                  exemption should be made generally based on size, rather than the
                                  current position. */
@@ -371,7 +371,7 @@ public class IconTasks {
                     scriptPW.println();
 
                     currentArtboardRowTallestIcon = Math.max(currentArtboardRowTallestIcon, dim.height);
-                    artboardX += dim.width + ARTBOARD_MIN_SPACING;
+                    artboardX += getArtboardAdvance(artboardX - ARTBOARD_FIRST_COLUMN_X, dim.width);
                 }
 
                 artboardIdx++;
@@ -383,6 +383,12 @@ public class IconTasks {
         System.out.println(
                 "A summary of bitmap icons, SVG icons, and artboard name mappings was generated here:");
         System.out.println(ICONS_HTML_FILE);
+    }
+
+    private static int getArtboardAdvance(int currentPosition, int iconSize) {
+      int minAdvance = iconSize + ARTBOARD_MIN_SPACING;
+      int nextGridPosition = Math.ceilDiv(currentPosition + minAdvance, ARTBOARD_GRID) * ARTBOARD_GRID;
+      return nextGridPosition - currentPosition;
     }
 
     private static PrintWriter createPrintWriter(File file) throws IOException {
