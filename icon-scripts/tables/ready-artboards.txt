@@ -250,7 +250,7 @@ profile
 backTraces
 forwardTraces
 profilerAttach
-resetResultsProfilingPoints
+resetResultsProfilingPoint
 mavenWeb
 newLayout
 breakpoint7x7
@@ -263,6 +263,7 @@ implements
 edit
 javaMaven
 found
+found7x7
 foundTest
 foundComment
 foundImport
@@ -272,7 +273,6 @@ foundWrite
 diff
 diffFile
 stashes
-shelve
 clean
 cleanProject
 defaultNode
@@ -315,3 +315,5 @@ compileSingle
 rebuildCurrentProject
 testBadge
 colors32
+maven
+appearance32
